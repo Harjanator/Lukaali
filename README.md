@@ -1,1 +1,1 @@
-# Lukaali
+# Lukaali Config
