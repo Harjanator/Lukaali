@@ -1,0 +1,10 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+echo "0" >> /sys/kernel/debug/ieee80211/phy0/mlwifi
+echo "0" >> /sys/kernel/debug/ieee80211/phy1/mlwifi
+
+sleep 10
+/etc/init.d/cloudflared start
+
+exit 0

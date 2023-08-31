@@ -1,0 +1,62 @@
+
+config core 'main'
+	option lang 'auto'
+	option resourcebase '/luci-static/resources'
+	option ubuspath '/ubus/'
+	option mediaurlbase '/luci-static/bootstrap-dark'
+
+config extern 'flash_keep'
+	option uci '/etc/config/'
+	option dropbear '/etc/dropbear/'
+	option openvpn '/etc/openvpn/'
+	option passwd '/etc/passwd'
+	option opkg '/etc/opkg.conf'
+	option firewall '/etc/firewall.user'
+	option uploads '/lib/uci/upload/'
+
+config internal 'languages'
+	option en 'English'
+
+config internal 'sauth'
+	option sessionpath '/tmp/luci-sessions'
+	option sessiontime '3600'
+
+config internal 'ccache'
+	option enable '1'
+
+config internal 'themes'
+	option Bootstrap '/luci-static/bootstrap'
+	option BootstrapDark '/luci-static/bootstrap-dark'
+	option BootstrapLight '/luci-static/bootstrap-light'
+	option Material '/luci-static/material'
+	option OpenWrt '/luci-static/openwrt.org'
+	option OpenWrt2020 '/luci-static/openwrt2020'
+
+config internal 'apply'
+	option rollback '90'
+	option holdoff '4'
+	option timeout '5'
+	option display '1.5'
+
+config internal 'diag'
+	option dns 'openwrt.org'
+	option ping 'openwrt.org'
+	option route 'openwrt.org'
+
+config command
+	option name 'Upgrade all Packages'
+	option command 'opkg list-upgradable | cut -f 1 -d '\'' '\'' | xargs opkg upgrade'
+
+config command
+	option name 'Ping'
+	option param '1'
+	option command 'ping -w 5'
+
+config command
+	option name 'Crontab Configuration'
+	option command 'crontab -l'
+
+config command
+	option name 'Restart Network'
+	option command '/etc/init.d/network restart'
+
